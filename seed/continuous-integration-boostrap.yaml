@@ -7,8 +7,8 @@ spec:
   source:
     helm:
       valueFiles:
-      - seed-applications.yaml
-    path: shared-services-charts
+      - values.yaml
+    path: continuous-integration
     repoURL: https://github.com/polarpoint-io/argocd-shared-services-helm-apps.git
     targetRevision: HEAD
   destination:
