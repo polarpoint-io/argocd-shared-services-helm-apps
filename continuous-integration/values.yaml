@@ -1,2 +1,6 @@
-cluster: https://kubernetes.default.svc
-project: default
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/polarpoint-io/argocd-shared-services-helm-apps.git
+    targetRevision: HEAD
