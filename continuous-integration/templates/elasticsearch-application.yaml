@@ -10,6 +10,9 @@ spec:
     namespace: elasticsearch
     server: {{ .Values.cluster }}
   project: {{ .Values.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true    
   source:
     chart: elasticsearch
     helm:
