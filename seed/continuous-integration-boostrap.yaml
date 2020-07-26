@@ -1,9 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: seed-applications 
+  name: seed-applications
   namespace: argocd
 spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
   source:
     helm:
       valueFiles:
@@ -11,8 +15,5 @@ spec:
     path: continuous-integration
     repoURL: https://github.com/polarpoint-io/argocd-shared-services-helm-apps.git
     targetRevision: HEAD
-  destination:
-    server: https://kubernetes.default.svc
-  project: default
   syncPolicy:
     automated: {}
