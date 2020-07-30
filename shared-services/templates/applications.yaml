@@ -24,7 +24,7 @@ spec:
   project: {{ .project | default $.Values.projects.default }}
   syncPolicy:
     automated:
-      selfHeal: {{ syncPolicy.automated.selfHeal | default true  }}  
-      prune:   {{ syncPolicy.automated.prune | default false }}  
+      selfHeal: {{ .syncPolicy.automated.selfHeal | default true  }}  
+      prune:   {{ .syncPolicy.automated.prune | default false }}  
   {{- end }}
 {{- end }}
