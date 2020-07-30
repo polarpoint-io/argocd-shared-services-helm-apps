@@ -17,7 +17,7 @@ spec:
       valueFiles:
       - values.yaml
     repoURL: {{ .source.repoURL }}
-    targetRevision: {{ .targetRevision }}
+    targetRevision: {{ .source.targetRevision }}
   destination: 
     namespace: {{ .destination.namespace | default $.Values.global.namespace }}
     server: {{  .destination.server | default $.Values.global.defaultCluster }}
