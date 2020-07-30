@@ -1,0 +1,12 @@
+{{- range .Values.namespaces }}
+  {{- if .enabled }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '-1'
+  labels:
+    argocd.argoproj.io/instance: seed-applications
+  name: {{ .name }}
+   {{- end }}
+{{- end }} 
