@@ -1,0 +1,74 @@
+# Global configuration for all applications
+# defaults and constants
+
+
+global:
+  namespace: default
+  defaultCluster: https://kubernetes.default.svc
+projects:
+  default: default
+  
+namespaces:
+  netbox:
+    enabled: true
+    namespace: netbox
+  elastic:
+    enabled: false
+    namespace: elastic
+
+ # applications with parameters 
+applications:
+  netbox:
+    enabled: true
+    name: netbox
+    description: netbox helm chart
+    destination:
+      namespace: netbox
+      server: null
+    project: null  
+    enableCascade: true
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+    source:
+      namespace: netbox
+      chart: netbox
+      repoURL: https://charts.boo.tc  
+      path: null
+      targetRevision: 2.8.3
+    values: |-
+      replicaCount: 1
+
+      image:
+        repository: netboxcommunity/netbox
+        tag: v2.8.3
+        pullPolicy: IfNotPresent
+
+      superuser:
+        name: admin
+        email: admin@example.com
+        password: admin
+        apiToken: 0123456789abcdef0123456789abcdef01234567   
+
+  elasticsearch:
+    enabled: true
+    name: elasticsearch
+    description: elasticsearch helm chart
+    destination:
+      namespace: elasticsearch
+      server: null
+    project: null  
+    enableCascade: true
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+    source:
+      namespace: elastic
+      chart: elasticsearch
+      repoURL: https://helm.elastic.co  
+      path: null
+      targetRevision: 7.8.0
+      valueFiles:
+        - values.yaml   
