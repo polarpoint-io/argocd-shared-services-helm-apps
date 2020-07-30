@@ -12,11 +12,11 @@ metadata:
   namespace: 
 spec:
   source:
-    chart: {{ .sourceChart }}
+    chart: {{ .source.chart }}
     helm:
       valueFiles:
       - values.yaml
-    repoURL: {{ .repoURL }}
+    repoURL: {{ .source.repoURL }}
     targetRevision: {{ .targetRevision }}
   destination: 
     namespace: {{ .destination.namespace | default $.Values.global.namespace }}
@@ -24,7 +24,7 @@ spec:
   project: {{ .project | default $.Values.projects.default }}
   syncPolicy:
     automated:
-      selfHeal: {{ .enableSelfHeal | default true  }}  
-      prune:   {{ .enablePrune | default false }}  
+      selfHeal: {{ syncPolicy.automated.selfHeal | default true  }}  
+      prune:   {{ syncPolicy.automated.prune | default false }}  
   {{- end }}
 {{- end }}
