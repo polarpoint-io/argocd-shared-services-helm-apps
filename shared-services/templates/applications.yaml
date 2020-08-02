@@ -14,8 +14,15 @@ spec:
   source:
     chart: {{ .source.chart }}
     helm:
+  {{- if  isset .valuesFiles }}    
       valueFiles:
-      - values.yaml
+      - {{ .valuesFiles.valuesFile }}.yaml
+  {{- end }}
+  {{- if  isset .valuesFiles }}
+  {{- if  isset .values }}        
+    values: 
+    {{ .values }}
+  {{- end }}  
     repoURL: {{ .source.repoURL }}
     targetRevision: {{ .source.targetRevision }}
   destination: 
