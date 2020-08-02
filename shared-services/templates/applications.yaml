@@ -18,10 +18,6 @@ spec:
       valueFiles:
       - {{ .valuesFiles.valuesFile }}.yaml
   {{- end }}
-  {{- if .values }}        
-    values: 
-    {{ .values }}
-  {{- end }}  
     repoURL: {{ .source.repoURL }}
     targetRevision: {{ .source.targetRevision }}
   destination: 

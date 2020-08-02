@@ -37,19 +37,8 @@ applications:
       repoURL: https://charts.boo.tc  
       path: null
       targetRevision: 2.8.3
-    values: |-
-      replicaCount: 1
-
-      image:
-        repository: netboxcommunity/netbox
-        tag: v2.8.3
-        pullPolicy: IfNotPresent
-
-      superuser:
-        name: admin
-        email: admin@example.com
-        password: admin
-        apiToken: 0123456789abcdef0123456789abcdef01234567   
+      valueFiles:
+        - netbox-values.yaml  
 
   elasticsearch:
     enabled: true
@@ -70,5 +59,3 @@ applications:
       repoURL: https://helm.elastic.co  
       path: null
       targetRevision: 7.8.0
-      valueFiles:
-        - values.yaml   
