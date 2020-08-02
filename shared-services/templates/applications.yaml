@@ -14,11 +14,11 @@ spec:
   source:
     chart: {{ .source.chart }}
     helm:
-  {{- if  isset .valuesFiles }}    
+  {{- if .valuesFiles }}    
       valueFiles:
       - {{ .valuesFiles.valuesFile }}.yaml
   {{- end }}
-  {{- if   .values }}        
+  {{- if .values }}        
     values: 
     {{ .values }}
   {{- end }}  
