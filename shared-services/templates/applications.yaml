@@ -18,8 +18,7 @@ spec:
       valueFiles:
       - {{ .valuesFiles.valuesFile }}.yaml
   {{- end }}
-  {{- if  isset .valuesFiles }}
-  {{- if  isset .values }}        
+  {{- if   .values }}        
     values: 
     {{ .values }}
   {{- end }}  
