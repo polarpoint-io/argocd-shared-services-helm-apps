@@ -13,11 +13,11 @@ metadata:
 spec:
   source:
     chart: {{ .source.chart }}
-    helm:
-  {{- if .source.helm.valuesFiles }}    
-      valueFiles:
-      - {{ .source.helm.valuesFiles }}.yaml
-  {{- end }}
+{{- if .source.helmValues }}
+{{ tpl .source.helmValues $ | indent 4 }}
+{{- else if .source.helmValuesFile }}
+{{ tpl .source.helmValuesFile $ | indent 4 }}
+{{- end }}
     repoURL: {{ .source.repoURL }}
     targetRevision: {{ .source.targetRevision }}
   destination: 

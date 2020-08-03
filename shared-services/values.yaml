@@ -37,26 +37,8 @@ applications:
       repoURL: https://charts.boo.tc  
       path: null
       targetRevision: 2.8.3
+      helmValuesFiles: |
       helm:
-        valueFiles: netbox-values.yaml  
-
-  elasticsearch:
-    enabled: true
-    name: elasticsearch
-    description: elasticsearch helm chart
-    destination:
-      namespace: elasticsearch
-      server: null
-    project: null  
-    enableCascade: true
-    syncPolicy:
-      automated:
-        prune: true
-        selfHeal: true
-    source:
-      namespace: elastic
-      chart: elasticsearch
-      repoURL: https://helm.elastic.co  
-      path: null
-      targetRevision: 7.8.0
+        valueFiles: 
+        - netbox-values.yaml 
         
