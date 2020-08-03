@@ -38,8 +38,7 @@ applications:
       path: null
       targetRevision: 2.8.3
       helm:
-        valueFiles:
-        - netbox-values.yaml  
+        valueFiles: netbox-values.yaml  
 
   elasticsearch:
     enabled: true
