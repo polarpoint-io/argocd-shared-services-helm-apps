@@ -16,7 +16,7 @@ spec:
     helm:
   {{- if .helm.valuesFiles }}    
       valueFiles:
-      - {{ .valuesFiles.valuesFile }}.yaml
+      - {{ .helm.valuesFiles.valuesFile }}.yaml
   {{- end }}
     repoURL: {{ .source.repoURL }}
     targetRevision: {{ .source.targetRevision }}
