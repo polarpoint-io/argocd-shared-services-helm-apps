@@ -14,7 +14,7 @@ spec:
   source:
     chart: {{ .source.chart }}
     helm:
-  {{- if .valuesFiles }}    
+  {{- if .helm.valuesFiles }}    
       valueFiles:
       - {{ .valuesFiles.valuesFile }}.yaml
   {{- end }}

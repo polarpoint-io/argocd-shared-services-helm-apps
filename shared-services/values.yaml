@@ -37,7 +37,8 @@ applications:
       repoURL: https://charts.boo.tc  
       path: null
       targetRevision: 2.8.3
-      valueFiles:
+      helm:
+        valueFiles:
         - netbox-values.yaml  
 
   elasticsearch:
@@ -59,3 +60,6 @@ applications:
       repoURL: https://helm.elastic.co  
       path: null
       targetRevision: 7.8.0
+      helm:
+        valuesFiles:
+        null
