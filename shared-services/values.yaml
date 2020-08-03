@@ -37,7 +37,7 @@ applications:
       repoURL: https://charts.boo.tc  
       path: null
       targetRevision: 2.8.3
-      helmValuesFiles: |
+      helmValuesFile: |
       helm:
         valueFiles: 
         - netbox-values.yaml 
