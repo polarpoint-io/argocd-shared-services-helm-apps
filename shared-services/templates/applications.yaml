@@ -9,14 +9,11 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   {{- end }}    
   name: {{ .name }}
-  namespace: 
 spec:
   source:
     chart: {{ .source.chart }}
-    {{- if .source.helmValuesFile }}
-    helm:
-      valueFiles: 
-      - netbox-values.yaml 
+    {{- if .source.helmValuesOrFile }}
+    {{ tpl .source.helmValuesOrFile $  }}
     {{- end }}
     repoURL: {{ .source.repoURL }}
     targetRevision: {{ .source.targetRevision }}

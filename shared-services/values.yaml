@@ -10,7 +10,7 @@ projects:
   
 namespaces:
   netbox:
-    enabled: true
+    enabled: false
     namespace: netbox
   elastic:
     enabled: false
@@ -37,8 +37,35 @@ applications:
       repoURL: https://charts.boo.tc  
       path: null
       targetRevision: 2.8.3
-      helmValuesFile: |
+      helmValuesOrFile: |
+        helm:
+              valueFiles: 
+              - netbox-values.yaml
+  fluent-bit:
+    enabled: true
+    name: fluent-bit
+    description: fluent-bit helm chart
+    destination:
+      namespace: ops
+      server: null
+    project: null  
+    enableCascade: true
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+    source:
+      namespace: ops
+      chart: fluent-bit
+      repoURL: https://kubernetes-charts.storage.googleapis.com
+      path: null
+      targetRevision: 2.8.12 
       helm:
-        valueFiles: 
-        - netbox-values.yaml 
-        
+        values: |
+          image:
+            fluent_bit:
+              repository: fluent/fluent-bit
+              tag: 1.3.8
+              pullPolicy: Always
+          metrics:
+            enabled: true           
