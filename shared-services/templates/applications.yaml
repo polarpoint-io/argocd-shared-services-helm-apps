@@ -14,7 +14,7 @@ spec:
   source:
     chart: {{ .source.chart }}
     {{- if .source.helmValuesFile }}
-    {{ tpl .source.helmValuesFile $ | indent 4 }}
+    {{ tpl .source.helmValuesFile . }}
     {{- end }}
     repoURL: {{ .source.repoURL }}
     targetRevision: {{ .source.targetRevision }}
