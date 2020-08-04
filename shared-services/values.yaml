@@ -9,11 +9,11 @@ projects:
   default: default
   
 namespaces:
-  netbox:
-    enabled: false
-    namespace: netbox
-  elastic:
-    enabled: false
+  ops:
+    enabled: true
+    namespace: ops
+  monitoring:
+    enabled: true
     namespace: elastic
 
  # applications with parameters 
@@ -23,7 +23,7 @@ applications:
     name: netbox
     description: netbox helm chart
     destination:
-      namespace: netbox
+      namespace: ops
       server: null
     project: null  
     enableCascade: true
@@ -32,15 +32,15 @@ applications:
         prune: true
         selfHeal: true
     source:
-      namespace: netbox
+      namespace: ops
       chart: netbox
       repoURL: https://charts.boo.tc  
       path: null
       targetRevision: 2.8.3
       helmValuesOrFile: |
         helm:
-              valueFiles: 
-              - netbox-values.yaml
+          valueFiles: 
+          - netbox-values.yaml
   fluent-bit:
     enabled: true
     name: fluent-bit
@@ -62,11 +62,11 @@ applications:
       targetRevision: 2.8.12
       helmValuesOrFile: |       
         helm:
-              values: |
-                image:
-                  fluent_bit:
-                    repository: fluent/fluent-bit
-                    tag: 1.3.8
-                    pullPolicy: Always
-                metrics:
-                  enabled: true           
+          values: |
+            image:
+              fluent_bit:
+                repository: fluent/fluent-bit
+                tag: 1.3.8
+                pullPolicy: Always
+            metrics:
+              enabled: true           

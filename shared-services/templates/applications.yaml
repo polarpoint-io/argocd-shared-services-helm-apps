@@ -12,9 +12,9 @@ metadata:
 spec:
   source:
     chart: {{ .source.chart }}
-    {{- if .source.helmValuesOrFile }}
-    {{ tpl .source.helmValuesOrFile $  }}
-    {{- end }}
+{{- if .source.helmValuesOrFile }}
+{{ tpl .source.helmValuesOrFile $  | indent 4}}
+{{- end }}
     repoURL: {{ .source.repoURL }}
     targetRevision: {{ .source.targetRevision }}
   destination: 
